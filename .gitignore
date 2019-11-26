@@ -60,6 +60,7 @@ speed-measure-plugin*.json
 .vs
 .vs/*
 
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json

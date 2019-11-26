@@ -23,3 +23,5 @@ https://www.nuget.org/packages
 
 https://www.nuget.org/profiles/Microsoft
 
+https://stackoverflow.com/questions/46958892/cant-find-edit-project-command-in-visual-studio-for-mac
+
