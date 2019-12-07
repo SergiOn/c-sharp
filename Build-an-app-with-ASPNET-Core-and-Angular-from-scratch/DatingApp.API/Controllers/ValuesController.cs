@@ -12,6 +12,7 @@ namespace DatingApp.API.Controllers {
         // GET: api/values
         [HttpGet]
         public IEnumerable<string> Get() {
+//            throw new Exception("hhjj");
             return new string[] { "value1", "value2" };
         }
 
