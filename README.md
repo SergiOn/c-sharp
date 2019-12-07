@@ -23,6 +23,12 @@ https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-
 
 https://docs.microsoft.com/en-us/aspnet/core/migration/30-to-31?view=aspnetcore-3.0&tabs=visual-studio-mac
 
+#### Dependencies
+
+https://www.nuget.org/profiles/Microsoft
+
+https://www.nuget.org/packages/Microsoft.EntityFrameworkCore
+
 #### Commands
 
 ```bash
