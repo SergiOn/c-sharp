@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DatingApp.API.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers {
@@ -9,27 +10,34 @@ namespace DatingApp.API.Controllers {
     [Route("api/[controller]")]
     public class ValuesController : Controller {
 
+        private readonly DataContext context;
+
+        public ValuesController(DataContext context) {
+            this.context = context;
+        }
+
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get() {
-//            throw new Exception("hhjj");
-            return new string[] { "value1", "value2" };
+        public IActionResult GetValues() {
+            var values = context.Values.ToList();
+            return Ok(values);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id) {
-            return "value";
+        public IActionResult Get(int id) {
+            var value = context.Values.FirstOrDefault(x => x.Id == id);
+            return Ok(value);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value) {
+        public void Post([FromBody] string value) {
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value) {
+        public void Put(int id, [FromBody] string value) {
         }
 
         // DELETE api/values/5
