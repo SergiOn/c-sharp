@@ -140,3 +140,5 @@ https://stackoverflow.com/questions/59118133/facing-issue-while-installing-dotne
 
 https://stackoverflow.com/questions/40874640/value-cannot-be-null-parameter-name-connectionstring-appsettings-json-in-start
 
+https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/proxy.md
+
