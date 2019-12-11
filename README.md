@@ -170,6 +170,8 @@ Done.
 
 #### Links
 
+https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy
+
 https://docs.microsoft.com/en-us/dotnet/core/versions/remove-runtime-sdk-versions?tabs=macos
 
 https://www.nuget.org/packages
@@ -195,4 +197,6 @@ https://stackoverflow.com/questions/59118133/facing-issue-while-installing-dotne
 https://stackoverflow.com/questions/40874640/value-cannot-be-null-parameter-name-connectionstring-appsettings-json-in-start
 
 https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/proxy.md
+
+https://www.c-sharpcorner.com/article/the-using-statement-in-C-Sharp/
 
