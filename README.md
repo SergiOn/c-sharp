@@ -58,6 +58,9 @@ dotnet-ef migrations -h
 dotnet-ef migrations add InitialCreate
 To undo this action, use 'ef migrations remove'
 dotnet ef database update
+dotnet tool -h
+dotnet tool uninstall --global dotnet-ef
+dotnet tool install --global dotnet-ef
 ```
 
 ```
