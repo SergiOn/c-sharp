@@ -39,6 +39,8 @@ https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/
 
 https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/
 
+https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer/
+
 #### Commands
 
 ```bash
