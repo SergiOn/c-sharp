@@ -35,6 +35,10 @@ https://www.nuget.org/packages/dotnet-ef
 
 https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Design/
 
+https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/
+
+https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/
+
 #### Commands
 
 ```bash
