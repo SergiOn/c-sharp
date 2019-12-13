@@ -181,6 +181,8 @@ Done.
 
 https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy
 
+https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/proxy-load-balancer
+
 https://docs.microsoft.com/en-us/dotnet/core/versions/remove-runtime-sdk-versions?tabs=macos
 
 https://www.nuget.org/packages
