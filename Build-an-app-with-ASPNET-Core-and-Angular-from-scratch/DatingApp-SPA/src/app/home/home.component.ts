@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +9,7 @@ export class HomeComponent {
 
   registerMode = false;
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   registerToggle() {
     this.registerMode = true;
