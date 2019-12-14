@@ -21,7 +21,7 @@ export class NavComponent {
         console.log('Logged in successfully');
       },
       error => {
-        console.log('Failed to login');
+        console.log('Failed to login', error);
       }
     );
   }
