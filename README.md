@@ -211,3 +211,7 @@ https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/pr
 
 https://www.c-sharpcorner.com/article/the-using-statement-in-C-Sharp/
 
+https://docs.microsoft.com/en-us/aspnet/core/web-api/handle-errors
+
+https://stackoverflow.com/questions/11037004/are-there-any-constants-for-the-default-http-headers
+
