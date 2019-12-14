@@ -4,12 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ErrorInterceptorProvider } from './_services/error.interceptor';
+import { AuthService } from './_services/auth.service';
+import { AlertifyService } from './_services/alertify.service';
 import { ValueComponent } from './value/value.component';
 import { NavComponent } from './nav/nav.component';
-import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
   ],
   providers: [
     ErrorInterceptorProvider,
-    AuthService
+    AuthService,
+    AlertifyService
   ],
   bootstrap: [AppComponent]
 })

@@ -41,6 +41,8 @@ https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt/
 
 https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer/
 
+https://alertifyjs.com/
+
 #### Commands
 
 ```bash
