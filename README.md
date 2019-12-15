@@ -47,6 +47,8 @@ https://github.com/auth0/angular2-jwt
 
 https://valor-software.com/ngx-bootstrap
 
+https://bootswatch.com/help/
+
 #### Commands
 
 ```bash
