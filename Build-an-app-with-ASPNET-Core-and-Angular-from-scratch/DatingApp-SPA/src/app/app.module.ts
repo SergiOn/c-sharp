@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
@@ -23,7 +24,8 @@ import { RegisterComponent } from './register/register.component';
       config: {
         tokenGetter: () => localStorage.getItem('token'),
       }
-    })
+    }),
+    BsDropdownModule.forRoot()
   ],
   declarations: [
     AppComponent,

@@ -28,12 +28,16 @@ export class NavComponent {
   }
 
   loggedIn() {
-    this.authService.loggedIn();
+    return this.authService.loggedIn();
   }
 
   logout() {
     this.authService.logout();
     this.alertify.message('Logged out');
+  }
+
+  getDecodedToken() {
+    return this.authService.decodedToken;
   }
 
 }

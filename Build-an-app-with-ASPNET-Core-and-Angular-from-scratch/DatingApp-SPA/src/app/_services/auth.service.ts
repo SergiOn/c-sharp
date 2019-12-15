@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class AuthService {
 
+  decodedToken: any;
   private readonly baseUrl = '/api/auth';
-  private decodedToken: any;
 
   constructor(private http: HttpClient, private jwtHelperService: JwtHelperService) {
     this.decodedToken = jwtHelperService.decodeToken();
