@@ -43,6 +43,8 @@ https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer/
 
 https://alertifyjs.com/
 
+https://github.com/auth0/angular2-jwt
+
 #### Commands
 
 ```bash

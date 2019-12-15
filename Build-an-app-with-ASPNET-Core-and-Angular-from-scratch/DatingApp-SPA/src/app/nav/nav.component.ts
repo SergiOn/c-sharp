@@ -28,12 +28,11 @@ export class NavComponent {
   }
 
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
+    this.authService.loggedIn();
   }
 
   logout() {
-    localStorage.removeItem('token');
+    this.authService.logout();
     this.alertify.message('Logged out');
   }
 
