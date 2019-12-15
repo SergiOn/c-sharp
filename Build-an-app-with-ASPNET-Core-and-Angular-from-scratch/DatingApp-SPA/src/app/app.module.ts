@@ -7,6 +7,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
+import { AuthGuard } from './_guards/auth.guard';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthService } from './_services/auth.service';
 import { ValueComponent } from './value/value.component';
@@ -42,6 +43,7 @@ import { MessagesComponent } from './messages/messages.component';
   ],
   providers: [
     ErrorInterceptorProvider,
+    AuthGuard,
     AlertifyService,
     AuthService
   ],
