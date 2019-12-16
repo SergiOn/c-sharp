@@ -184,6 +184,10 @@ info: Microsoft.EntityFrameworkCore.Database.Command[20100]
       VALUES ('20191211150441_AddedUserEntity', '3.0.1');
 Done.
 ```
+```bash
+dotnet-ef migrations add ExtendedUserClass
+Done. To undo this action, use 'ef migrations remove'
+```
 
 #### Links
 
