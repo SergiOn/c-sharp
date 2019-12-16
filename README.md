@@ -203,6 +203,10 @@ dotnet ef database drop
 dotnet ef migrations remove
 dotnet ef database update
 ```
+```bash
+dotnet ef migrations add ExtendedUserClass
+dotnet ef database update
+```
 
 #### Links
 
