@@ -185,8 +185,23 @@ info: Microsoft.EntityFrameworkCore.Database.Command[20100]
 Done.
 ```
 ```bash
-dotnet-ef migrations add ExtendedUserClass
+dotnet ef migrations add ExtendedUserClass
 Done. To undo this action, use 'ef migrations remove'
+```
+```bash
+dotnet ef migrations list
+20191208234233_InitialCreate
+20191211150441_AddedUserEntity
+20191216222628_ExtendedUserClass
+```
+```bash
+dotnet ef migrations remove
+dotnet ef migrations add ExtendedUserClass
+dotnet ef database update
+dotnet ef database update AddedUserEntity
+dotnet ef database drop
+dotnet ef migrations remove
+dotnet ef database update
 ```
 
 #### Links
