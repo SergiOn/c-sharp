@@ -207,6 +207,9 @@ dotnet ef database update
 dotnet ef migrations add ExtendedUserClass
 dotnet ef database update
 ```
+```bash
+dotnet ef database drop
+```
 
 #### Links
 
@@ -245,4 +248,6 @@ https://www.c-sharpcorner.com/article/the-using-statement-in-C-Sharp/
 https://docs.microsoft.com/en-us/aspnet/core/web-api/handle-errors
 
 https://stackoverflow.com/questions/11037004/are-there-any-constants-for-the-default-http-headers
+
+https://next.json-generator.com
 
