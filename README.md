@@ -49,6 +49,8 @@ https://valor-software.com/ngx-bootstrap
 
 https://bootswatch.com/help/
 
+https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/
+
 #### Commands
 
 ```bash
