@@ -51,6 +51,8 @@ https://bootswatch.com/help/
 
 https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/
 
+https://www.nuget.org/packages/AutoMapper.Extensions.Microsoft.DependencyInjection/
+
 #### Commands
 
 ```bash
