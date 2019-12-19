@@ -1,9 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import { NgxGalleryModule } from 'ngx-gallery';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
@@ -23,6 +24,13 @@ import { MessagesComponent } from './messages/messages.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 
+export class CustomHammerConfig extends HammerGestureConfig  {
+  overrides = {
+    pinch: { enable: false },
+    rotate: { enable: false }
+  };
+}
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -36,7 +44,8 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
       }
     }),
     BsDropdownModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    NgxGalleryModule,
   ],
   declarations: [
     AppComponent,
@@ -52,12 +61,13 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
   ],
   providers: [
     ErrorInterceptorProvider,
+    { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig },
     AuthGuard,
     MemberListResolver,
     MemberDetailResolver,
     AlertifyService,
     AuthService,
-    UserService
+    UserService,
   ],
   bootstrap: [AppComponent]
 })

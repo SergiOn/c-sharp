@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from 'ngx-gallery';
 import { AlertifyService } from '../../_services/alertify.service';
 import { UserService } from '../../_services/user.service';
 import { User } from '../../_models/user';
+import { Photo } from '../../_models/Photo';
 
 @Component({
   selector: 'app-member-detail',
@@ -11,8 +13,8 @@ import { User } from '../../_models/user';
 })
 export class MemberDetailComponent implements OnInit {
   user: User;
-  // galleryOptions: NgxGalleryOptions[];
-  // galleryImages: NgxGalleryImage[];
+  galleryOptions: NgxGalleryOptions[];
+  galleryImages: NgxGalleryImage[];
 
   constructor(
     private router: Router,
@@ -26,38 +28,37 @@ export class MemberDetailComponent implements OnInit {
     // this.route.data.subscribe(data => {
     //   this.user = data.user;
     // });
-
-    // this.galleryOptions = [{
-    //   width: '500px',
-    //   height: '500px',
-    //   imagePercent: 100,
-    //   thumbnailsColumns: 4,
-    //   imageAnimation: NgxGalleryAnimation.Slide,
-    //   preview: false
-    // }];
-    // this.galleryImages = this.getImages();
   }
 
   loadUser() {
     this.userService.getUser(this.route.snapshot.params.id).subscribe((user: User) => {
       this.user = user;
+      this.setupGalleryOptions();
     }, error => {
       this.alertify.error('Problem retrieving data');
       this.router.navigate(['/members']);
     });
   }
 
+  setupGalleryOptions() {
+    this.galleryOptions = [{
+      width: '500px',
+      height: '500px',
+      imagePercent: 100,
+      thumbnailsColumns: 4,
+      imageAnimation: NgxGalleryAnimation.Slide,
+      preview: false
+    }];
+    this.galleryImages = this.getImages();
+  }
+
   getImages() {
-    const imageUrls = [];
-    for (const photo of this.user.photos) {
-      imageUrls.push({
-        small: photo.url,
-        medium: photo.url,
-        big: photo.url,
-        description: photo.description
-      });
-    }
-    return imageUrls;
+    return this.user.photos.map((photo: Photo) => ({
+      small: photo.url,
+      medium: photo.url,
+      big: photo.url,
+      description: photo.description
+    }));
   }
 
 }

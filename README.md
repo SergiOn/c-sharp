@@ -53,6 +53,8 @@ https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/
 
 https://www.nuget.org/packages/AutoMapper.Extensions.Microsoft.DependencyInjection/
 
+https://www.npmjs.com/package/ngx-gallery
+
 #### Commands
 
 ```bash
