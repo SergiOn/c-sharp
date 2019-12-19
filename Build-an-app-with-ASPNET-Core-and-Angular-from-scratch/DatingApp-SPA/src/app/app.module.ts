@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AuthGuard } from './_guards/auth.guard';
+import { MemberListResolver } from './_resolver/member-list.resolver';
+import { MemberDetailResolver } from './_resolver/member-detail-resolver';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthService } from './_services/auth.service';
 import { UserService } from './_services/user.service';
@@ -51,6 +53,8 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
   providers: [
     ErrorInterceptorProvider,
     AuthGuard,
+    MemberListResolver,
+    MemberDetailResolver,
     AlertifyService,
     AuthService,
     UserService
