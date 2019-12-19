@@ -19,6 +19,7 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,7 @@ import { MemberCardComponent } from './members/member-card/member-card.component
     JwtModule.forRoot({
       config: {
         tokenGetter: () => localStorage.getItem('token'),
-        blacklistedRoutes: ['/api/auth']
+        blacklistedRoutes: ['/api/auth/login', '/api/auth/register']
       }
     }),
     BsDropdownModule.forRoot()
@@ -43,7 +44,8 @@ import { MemberCardComponent } from './members/member-card/member-card.component
     MemberListComponent,
     ListsComponent,
     MessagesComponent,
-    MemberCardComponent
+    MemberCardComponent,
+    MemberDetailComponent
   ],
   providers: [
     ErrorInterceptorProvider,
