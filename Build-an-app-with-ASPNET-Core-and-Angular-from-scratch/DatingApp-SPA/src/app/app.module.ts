@@ -10,6 +10,7 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AuthGuard } from './_guards/auth.guard';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthService } from './_services/auth.service';
+import { UserService } from './_services/user.service';
 import { ValueComponent } from './value/value.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
@@ -45,7 +46,8 @@ import { MessagesComponent } from './messages/messages.component';
     ErrorInterceptorProvider,
     AuthGuard,
     AlertifyService,
-    AuthService
+    AuthService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
