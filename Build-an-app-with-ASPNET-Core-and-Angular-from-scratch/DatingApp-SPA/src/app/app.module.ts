@@ -29,6 +29,7 @@ import { MemberCardComponent } from './members/member-card/member-card.component
     JwtModule.forRoot({
       config: {
         tokenGetter: () => localStorage.getItem('token'),
+        blacklistedRoutes: ['/api/auth']
       }
     }),
     BsDropdownModule.forRoot()
