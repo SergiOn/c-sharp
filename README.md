@@ -216,7 +216,10 @@ dotnet ef database update
 ```bash
 dotnet ef database drop
 ```
-
+```bash
+dotnet ef migrations add UpdatedUserClass
+dotnet ef database update UpdatedUserClass
+```
 #### Links
 
 https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy
