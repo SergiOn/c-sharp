@@ -13,7 +13,7 @@ import { NgForm } from '@angular/forms';
 })
 export class MemberEditComponent implements OnInit {
 
-  @ViewChild('editForm', { static: true }) editForm: NgForm;
+  @ViewChild('editForm', { static: false }) editForm: NgForm;
 
   user: User;
 

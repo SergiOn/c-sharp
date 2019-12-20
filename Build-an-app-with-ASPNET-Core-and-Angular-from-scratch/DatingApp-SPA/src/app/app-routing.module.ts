@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './_guards/auth.guard';
+import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes-guard.service';
 // import { MemberListResolver } from './_resolver/member-list.resolver';
 // import { MemberDetailResolver } from './_resolver/member-detail.resolver';
 // import { MemberEditResolver } from './_resolver/member-edit.resolver';
@@ -31,7 +32,7 @@ const routes: Routes = [{
     path: 'member/edit',
     component: MemberEditComponent,
     // resolve: { user: MemberEditResolver },
-    // canDeactivate: [PreventUnsavedChanges]
+    canDeactivate: [PreventUnsavedChangesGuard]
   }, {
     path: 'messages',
     component: MessagesComponent
