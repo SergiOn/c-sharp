@@ -9,9 +9,9 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class MemberListResolver implements Resolve<User[]> {
   constructor(
-    private userService: UserService,
     private router: Router,
-    private alertify: AlertifyService
+    private alertify: AlertifyService,
+    private userService: UserService
   ) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<User[]> {

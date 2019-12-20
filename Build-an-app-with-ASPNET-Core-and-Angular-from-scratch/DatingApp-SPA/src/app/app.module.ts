@@ -10,7 +10,8 @@ import { AppComponent } from './app.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AuthGuard } from './_guards/auth.guard';
 import { MemberListResolver } from './_resolver/member-list.resolver';
-import { MemberDetailResolver } from './_resolver/member-detail-resolver';
+import { MemberDetailResolver } from './_resolver/member-detail.resolver';
+import { MemberEditResolver } from './_resolver/member-edit.resolver';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthService } from './_services/auth.service';
 import { UserService } from './_services/user.service';
@@ -23,6 +24,7 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 
 export class CustomHammerConfig extends HammerGestureConfig  {
   overrides = {
@@ -57,7 +59,8 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     ListsComponent,
     MessagesComponent,
     MemberCardComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    MemberEditComponent
   ],
   providers: [
     ErrorInterceptorProvider,
@@ -65,6 +68,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     AuthGuard,
     MemberListResolver,
     MemberDetailResolver,
+    MemberEditResolver,
     AlertifyService,
     AuthService,
     UserService,

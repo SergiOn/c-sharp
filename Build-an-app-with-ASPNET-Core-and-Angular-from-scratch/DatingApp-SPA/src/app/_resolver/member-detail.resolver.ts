@@ -10,9 +10,9 @@ import { User } from '../_models/user';
 export class MemberDetailResolver implements Resolve<User> {
 
   constructor(
-    private userService: UserService,
     private router: Router,
-    private alertify: AlertifyService
+    private alertify: AlertifyService,
+    private userService: UserService
   ) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<User> {
