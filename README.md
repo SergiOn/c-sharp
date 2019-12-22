@@ -55,6 +55,8 @@ https://www.nuget.org/packages/AutoMapper.Extensions.Microsoft.DependencyInjecti
 
 https://www.npmjs.com/package/ngx-gallery
 
+https://www.nuget.org/packages/CloudinaryDotNet/
+
 #### Commands
 
 ```bash
@@ -220,6 +222,11 @@ dotnet ef database drop
 dotnet ef migrations add UpdatedUserClass
 dotnet ef database update UpdatedUserClass
 ```
+```bash
+dotnet ef migrations add AddedPublicId
+dotnet ef database update
+```
+
 #### Links
 
 https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy
@@ -259,4 +266,10 @@ https://docs.microsoft.com/en-us/aspnet/core/web-api/handle-errors
 https://stackoverflow.com/questions/11037004/are-there-any-constants-for-the-default-http-headers
 
 https://next.json-generator.com
+
+https://cloudinary.com/console/welcome
+
+https://cloudinary.com/documentation/how_to_integrate_cloudinary
+
+https://cloudinary.com/documentation/dotnet_integration
 
