@@ -57,6 +57,8 @@ https://www.npmjs.com/package/ngx-gallery
 
 https://www.nuget.org/packages/CloudinaryDotNet/
 
+https://www.nuget.org/packages/Newtonsoft.Json/
+
 #### Commands
 
 ```bash
