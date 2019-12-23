@@ -26,4 +26,8 @@ export class UserService {
     return this.http.post(`${this.url}/${userId}/photos/${id}/setMain`, {});
   }
 
+  deletePhoto(userId: number, id: number) {
+    return this.http.delete(`${this.url}/${userId}/photos/${id}`);
+  }
+
 }
