@@ -35,6 +35,10 @@ export class NavComponent {
     return this.authService.loggedIn();
   }
 
+  getPhotoUrl() {
+    return this.authService.photoUrl;
+  }
+
   logout() {
     this.authService.logout();
     this.alertify.message('Logged out');
