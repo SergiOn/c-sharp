@@ -275,3 +275,9 @@ https://cloudinary.com/documentation/how_to_integrate_cloudinary
 
 https://cloudinary.com/documentation/dotnet_integration
 
+https://scotch.io/@ibrahimalsurkhi/match-password-validation-with-angular-2
+
+https://angular.io/guide/form-validation
+
+https://angular.io/api/forms/AbstractControl
+
