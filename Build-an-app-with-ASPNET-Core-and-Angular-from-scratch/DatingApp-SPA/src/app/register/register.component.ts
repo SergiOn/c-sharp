@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CustomValidators } from '../_validators';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CustomValidators } from '../_validators/custom.validators';
 
 @Component({
   selector: 'app-register',
@@ -20,9 +20,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = new FormGroup({
-      username: new FormControl('1', Validators.required),
-      password: new FormControl('2', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
-      confirmPassword: new FormControl('3', [Validators.required, CustomValidators.fieldMatchValidator('password')]),
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
+      confirmPassword: new FormControl('', [Validators.required, CustomValidators.fieldMatchValidator('password')]),
       // }, CustomValidators.passwordMatchValidator);
     });
   }
@@ -37,10 +37,23 @@ export class RegisterComponent implements OnInit {
     //   }
     // );
     console.log(this.registerForm);
+    console.log('valid', this.registerForm.valid);
   }
 
   cancel() {
     this.cancelRegister.emit();
+  }
+
+  get usernameField(): AbstractControl {
+    return this.registerForm.get('username');
+  }
+
+  get passwordField(): AbstractControl {
+    return this.registerForm.get('password');
+  }
+
+  get confirmPasswordField(): AbstractControl {
+    return this.registerForm.get('confirmPassword');
   }
 
 }

@@ -3,5 +3,5 @@ import { fieldMatchValidator } from './field-match.validator';
 
 export const CustomValidators = {
   passwordMatchValidator,
-  fieldMatchValidator
+  fieldMatchValidator,
 };

@@ -1,14 +1,33 @@
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 
-export interface FieldMatchValidatorError {
+interface FieldMatchValidatorError {
   [key: string]: true;
 }
 
-export const fieldMatchValidator = (fieldName: string) => (ac: AbstractControl): FieldMatchValidatorError | null => {
-  const rootField: AbstractControl = ac.root;
-  const field: AbstractControl = rootField && rootField.get(fieldName);
+export const fieldMatchValidator = (fieldName: string): ValidatorFn => {
+  const errorKey = `${fieldName}Mismatch`;
+  const isExistInputValue = (value: string | null): boolean => Boolean(value);
+  let applySubscriptionToValueChanges = false;
 
-  return field && field.value !== ac.value
-    ? ({ [`${fieldName}Mismatch`]: true })
-    : null;
+  return (currentField: AbstractControl): FieldMatchValidatorError | null => {
+    const rootField: AbstractControl = currentField.root;
+    const fieldToMatch: AbstractControl = rootField.get(fieldName);
+
+    if (!fieldToMatch) {
+      return null;
+    }
+
+    if (!applySubscriptionToValueChanges) {
+      applySubscriptionToValueChanges = true;
+      fieldToMatch.valueChanges.subscribe(() => {
+        if (isExistInputValue(currentField.value)) {
+          currentField.updateValueAndValidity();
+        }
+      });
+    }
+
+    return isExistInputValue(currentField.value) && fieldToMatch.value !== currentField.value
+      ? ({ [errorKey]: true })
+      : null;
+  };
 };
