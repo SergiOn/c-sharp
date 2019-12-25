@@ -1,11 +1,12 @@
 import { BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, PipeTransform } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BsDatepickerModule, BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TimeAgoPipe } from 'time-ago-pipe';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
@@ -69,7 +70,8 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    TimeAgoPipe
   ],
   providers: [
     ErrorInterceptorProvider,
@@ -81,7 +83,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     MemberEditResolver,
     AlertifyService,
     AuthService,
-    UserService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
