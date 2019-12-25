@@ -3,12 +3,76 @@
   <hr>
 
   <div class="form-group">
+    <label class="control-label gender-field" [ngClass]="{ 'is-invalid': genderField.touched && genderField.errors }">
+      I am a:
+    </label>
+    <label class="radio-inline">
+      <input class="mr-3"
+          type="radio"
+          value="male"
+          formControlName="gender"/>
+      Male
+    </label>
+    <label class="radio-inline ml-3 ">
+      <input class="mr-3"
+          type="radio"
+          value="female"
+          formControlName="gender"/>
+      Female
+    </label>
+    <div class="invalid-feedback">Please choose a gender</div>
+  </div>
+
+  <div class="form-group">
     <input class="form-control"
         type="text"
         placeholder="Username"
         [ngClass]="{ 'is-invalid': usernameField.touched && usernameField.errors }"
         formControlName="username"/>
     <div class="invalid-feedback">Please choose a username</div>
+  </div>
+
+  <div class="form-group">
+    <input class="form-control"
+        placeholder="Known as"
+        [ngClass]="{ 'is-invalid': knownAsField.touched && knownAsField.errors }"
+        formControlName="knownAs"/>
+    <div class="invalid-feedback">
+      Known as is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input class="form-control"
+        placeholder="Date of Birth"
+        type="date"
+        [ngClass]="{ 'is-invalid': dateOfBirthField.touched && dateOfBirthField.errors }"
+        formControlName="dateOfBirth"/>
+<!--        bsDatepicker-->
+<!--        [bsConfig]="bsConfig"/>-->
+    <div class="invalid-feedback">
+      Date of Birth is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input class="form-control"
+        placeholder="City"
+        [ngClass]="{ 'is-invalid': cityField.touched && cityField.errors }"
+        formControlName="city"/>
+    <div class="invalid-feedback">
+      City is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input class="form-control"
+        placeholder="Country"
+        formControlName="country"
+        [ngClass]="{ 'is-invalid': countryField.touched && countryField.errors }"/>
+    <div class="invalid-feedback">
+      Country is required
+    </div>
   </div>
 
   <div class="form-group">
@@ -43,6 +107,7 @@
   </div>
 
   <div class="form-group text-center">
+<!--    <button class="btn btn-success" type="submit" [disabled]="registerForm.invalid">Register</button>-->
     <button class="btn btn-success" type="submit">Register</button>
     <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
   </div>

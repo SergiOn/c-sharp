@@ -20,10 +20,15 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
+      gender: ['', Validators.required],
       username: ['', Validators.required],
+      knownAs: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
       confirmPassword: ['', [Validators.required, CustomValidators.fieldMatchValidator('password')]]
-      // }, CustomValidators.passwordMatchValidator);
+      // }, {validators: CustomValidators.passwordMatchValidator)};
     });
   }
 
@@ -36,6 +41,7 @@ export class RegisterComponent implements OnInit {
     //     this.alertify.error(error);
     //   }
     // );
+    this.registerForm.markAllAsTouched();
     console.log(this.registerForm);
     console.log('valid', this.registerForm.valid);
   }
@@ -44,8 +50,28 @@ export class RegisterComponent implements OnInit {
     this.cancelRegister.emit();
   }
 
+  get genderField(): AbstractControl {
+    return this.registerForm.get('gender');
+  }
+
   get usernameField(): AbstractControl {
     return this.registerForm.get('username');
+  }
+
+  get knownAsField(): AbstractControl {
+    return this.registerForm.get('knownAs');
+  }
+
+  get dateOfBirthField(): AbstractControl {
+    return this.registerForm.get('dateOfBirth');
+  }
+
+  get cityField(): AbstractControl {
+    return this.registerForm.get('city');
+  }
+
+  get countryField(): AbstractControl {
+    return this.registerForm.get('country');
   }
 
   get passwordField(): AbstractControl {
