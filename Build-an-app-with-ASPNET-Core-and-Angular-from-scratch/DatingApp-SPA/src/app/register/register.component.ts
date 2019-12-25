@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../_validators/custom.validators';
 
 @Component({
@@ -15,6 +16,7 @@ export class RegisterComponent implements OnInit {
 
   model: any = {};
   registerForm: FormGroup;
+  bsConfig: Partial<BsDatepickerConfig>;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private alertify: AlertifyService) {}
 
@@ -30,6 +32,9 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['', [Validators.required, CustomValidators.fieldMatchValidator('password')]]
       // }, {validators: CustomValidators.passwordMatchValidator)};
     });
+    this.bsConfig = {
+      containerClass: 'theme-red'
+    };
   }
 
   register() {

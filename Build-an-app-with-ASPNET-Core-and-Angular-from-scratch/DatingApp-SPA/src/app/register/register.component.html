@@ -45,11 +45,11 @@
   <div class="form-group">
     <input class="form-control"
         placeholder="Date of Birth"
-        type="date"
+        type="text"
         [ngClass]="{ 'is-invalid': dateOfBirthField.touched && dateOfBirthField.errors }"
-        formControlName="dateOfBirth"/>
-<!--        bsDatepicker-->
-<!--        [bsConfig]="bsConfig"/>-->
+        formControlName="dateOfBirth"
+        bsDatepicker
+        [bsConfig]="bsConfig"/>
     <div class="invalid-feedback">
       Date of Birth is required
     </div>
