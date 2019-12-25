@@ -1,9 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { CustomValidators } from '../_validators/custom.validators';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-register',
@@ -14,11 +16,10 @@ export class RegisterComponent implements OnInit {
 
   @Output() cancelRegister = new EventEmitter<void>();
 
-  model: any = {};
   registerForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private alertify: AlertifyService) {}
+  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService, private alertify: AlertifyService) {}
 
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -38,17 +39,25 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    // this.authService.register(this.model).subscribe(
-    //   () => {
-    //     this.alertify.success('Registration successful');
-    //   },
-    //   error => {
-    //     this.alertify.error(error);
-    //   }
-    // );
-    this.registerForm.markAllAsTouched();
-    console.log(this.registerForm);
-    console.log('valid', this.registerForm.valid);
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
+      return;
+    }
+
+    const user: User = this.registerForm.value;
+    this.authService.register(user).subscribe(
+      () => {
+        this.alertify.success('Registration successful');
+      },
+      error => {
+        this.alertify.error(error);
+      },
+      () => {
+        this.authService.login(user).subscribe(() => {
+          this.router.navigate(['/members']);
+        });
+      }
+    );
   }
 
   cancel() {
