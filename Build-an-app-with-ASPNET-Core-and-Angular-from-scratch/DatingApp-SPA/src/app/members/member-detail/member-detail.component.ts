@@ -61,4 +61,8 @@ export class MemberDetailComponent implements OnInit {
     }));
   }
 
+  getPhotoUrl() {
+    return this.user.photoUrl || '/assets/user.png';
+  }
+
 }

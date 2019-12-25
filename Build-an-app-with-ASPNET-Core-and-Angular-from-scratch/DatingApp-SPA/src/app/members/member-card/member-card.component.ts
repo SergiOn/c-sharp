@@ -8,4 +8,8 @@ import { User } from '../../_models/user';
 })
 export class MemberCardComponent {
   @Input() user: User;
+
+  getPhotoUrl() {
+    return this.user.photoUrl || '/assets/user.png';
+  }
 }

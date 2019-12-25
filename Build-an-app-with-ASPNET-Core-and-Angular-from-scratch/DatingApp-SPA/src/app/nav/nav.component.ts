@@ -36,7 +36,7 @@ export class NavComponent {
   }
 
   getPhotoUrl() {
-    return this.authService.photoUrl;
+    return this.authService.photoUrl || '/assets/user.png';
   }
 
   logout() {

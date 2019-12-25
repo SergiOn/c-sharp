@@ -62,7 +62,7 @@ export class MemberEditComponent implements OnInit {
   }
 
   getPhotoUrl() {
-    return this.authService.photoUrl;
+    return this.authService.photoUrl || '/assets/user.png';
   }
 
   updateMainPhoto(photoUrl: string) {
