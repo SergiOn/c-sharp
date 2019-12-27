@@ -9,7 +9,8 @@ export class PaginatedResult<T> {
 
   constructor(
     public result: T,
-    public pagination: Pagination) {
+    public pagination: Pagination
+  ) {
   }
 
 }
