@@ -3,7 +3,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { AlertifyService } from '../../_services/alertify.service';
 import { AuthService } from '../../_services/auth.service';
 import { UserService } from '../../_services/user.service';
-import { Photo } from '../../_models/Photo';
+import { Photo } from '../../_models/photo';
 
 @Component({
   selector: 'app-photo-editor',
