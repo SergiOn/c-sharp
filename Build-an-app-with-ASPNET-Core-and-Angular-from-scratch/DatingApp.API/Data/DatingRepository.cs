@@ -34,13 +34,15 @@ namespace DatingApp.API.Data {
             // var users = await context.Users.ToListAsync();
             var minDateOfBirth = DateTime.Today.AddYears(-userParams.MaxAge - 1);
             var maxDateOfBirth = DateTime.Today.AddYears(-userParams.MinAge);
+            var orderByCreated = userParams.OrderBy == "created";
             
             var users = context.Users
                 .Include(p => p.Photos)
                 .Where(u => u.Id != userParams.UserId)
                 .Where(u => u.Gender == userParams.Gender)
                 // .AsEnumerable()
-                .Where(u => u.DateOfBirth >= minDateOfBirth && u.DateOfBirth <= maxDateOfBirth);
+                .Where(u => u.DateOfBirth >= minDateOfBirth && u.DateOfBirth <= maxDateOfBirth)
+                .OrderByDescending(u => orderByCreated ? u.Created : u.LastActive);
                 // .AsQueryable();
 
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
