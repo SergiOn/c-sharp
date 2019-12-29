@@ -38,10 +38,12 @@ export class MemberListComponent implements OnInit {
     this.user = this.authService.currentUser;
     this.loadUsers();
 
-    this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
-    this.userParams.minAge = 18;
-    this.userParams.maxAge = 99;
-    this.userParams.orderBy = 'lastActive';
+    this.userParams = {
+      gender: this.user.gender === 'female' ? 'male' : 'female',
+      minAge: 18,
+      maxAge: 99,
+      orderBy: 'lastActive'
+    };
   }
 
   loadUsers() {
@@ -57,14 +59,17 @@ export class MemberListComponent implements OnInit {
   }
 
   pageChanged(event: any) {
-    this.pagination.currentPage = event.page;
+    this.pagination = { ...this.pagination, currentPage: event.page };
     this.loadUsers();
   }
 
   resetFilters() {
-    this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
-    this.userParams.minAge = 18;
-    this.userParams.maxAge = 99;
+    this.userParams = {
+      ...this.userParams,
+      gender: this.user.gender === 'female' ? 'male' : 'female',
+      minAge: 18,
+      maxAge: 99
+    };
     this.loadUsers();
   }
 
