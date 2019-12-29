@@ -4,6 +4,7 @@ import { User } from '../../_models/user';
 import { PaginatedResult, Pagination } from '../../_models/pagination';
 import { UserService } from '../../_services/user.service';
 import { AlertifyService } from '../../_services/alertify.service';
+import { AuthService } from '../../_services/auth.service';
 
 @Component({
   selector: 'app-member-list',
@@ -11,26 +12,42 @@ import { AlertifyService } from '../../_services/alertify.service';
   styleUrls: ['./member-list.component.scss']
 })
 export class MemberListComponent implements OnInit {
+  user: User;
   users: User[];
-  pagination: Pagination;
+  pagination: Pagination = {} as Pagination;
+  userParams: any = {};
+  genderList = [
+    { value: 'male', display: 'Males' },
+    { value: 'female', display: 'Females' }
+  ];
 
   private readonly pageNumber = 1;
   private readonly pageSize = 5;
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private alertify: AlertifyService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private alertify: AlertifyService,
+    private authService: AuthService,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
     // this.route.data.subscribe(data => {
     //   this.users = data.users.result;
     // });
+    this.user = this.authService.currentUser;
     this.loadUsers();
+
+    this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
+    this.userParams.minAge = 18;
+    this.userParams.maxAge = 99;
+    this.userParams.orderBy = 'lastActive';
   }
 
   loadUsers() {
-    const pagination = this.pagination || {} as Pagination;
-    const pageNumber = pagination.currentPage || this.pageNumber;
-    const pageSize = pagination.itemsPerPage || this.pageSize;
-    this.userService.getUsers(pageNumber, pageSize).subscribe((response: PaginatedResult<User[]>) => {
+    const pageNumber = this.pagination.currentPage || this.pageNumber;
+    const pageSize = this.pagination.itemsPerPage || this.pageSize;
+    this.userService.getUsers(pageNumber, pageSize, this.userParams).subscribe((response: PaginatedResult<User[]>) => {
       this.users = response.result;
       this.pagination = response.pagination;
       console.log(response.pagination);
@@ -41,6 +58,13 @@ export class MemberListComponent implements OnInit {
 
   pageChanged(event: any) {
     this.pagination.currentPage = event.page;
+    this.loadUsers();
+  }
+
+  resetFilters() {
+    this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
+    this.userParams.minAge = 18;
+    this.userParams.maxAge = 99;
     this.loadUsers();
   }
 

@@ -1,5 +1,66 @@
-<div class="container mt-5" *ngIf="users">
-  <div class="row">
+<div class="text-center mt-3">
+  <h2>Your matches - {{ pagination.totalItems }} found</h2>
+</div>
+
+<div class="container mt-3">
+
+  <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
+    <div class="form-group">
+      <label for="minAge">Age From</label>
+      <input class="form-control ml-1 filter-input"
+          id="minAge"
+          type="number"
+          name="minAge"
+          [(ngModel)]="userParams.minAge">
+    </div>
+
+    <div class="form-group px-2">
+      <label for="maxAge">Age To</label>
+      <input class="form-control ml-1 filter-input"
+          id="maxAge"
+          type="number"
+          name="maxAge"
+          [(ngModel)]="userParams.maxAge">
+    </div>
+
+    <div class="form-group px-2">
+      <label for="gender">Show: </label>
+      <select class="form-control ml-1 filter-select"
+          id="gender"
+          name="gender"
+          [(ngModel)]="userParams.gender">
+        <option *ngFor="let gender of genderList" [value]="gender.value">
+          {{gender.display}}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary filter-button">Apply Filters</button>
+    <button type="button" class="btn btn-info filter-button" (click)="resetFilters()">Reset Filter</button>
+<!--    <div class="col">-->
+<!--      <div class="btn-group float-right">-->
+<!--        <button class="btn btn-primary"-->
+<!--            type="button"-->
+<!--            name="orderBy"-->
+<!--            btnRadio="lastActive"-->
+<!--            [(ngModel)]="userParams.orderBy"-->
+<!--            (click)="loadUsers()">-->
+<!--          Last Active-->
+<!--        </button>-->
+<!--        <button class="btn btn-primary"-->
+<!--            type="button"-->
+<!--            name="orderBy"-->
+<!--            btnRadio="created"-->
+<!--            [(ngModel)]="userParams.orderBy"-->
+<!--            (click)="loadUsers()">-->
+<!--          Newest Members-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+
+  </form>
+  <br>
+
+  <div class="row" *ngIf="users">
     <div class="col-lg-2 col-md-3 col-sm-6" *ngFor="let user of users">
       <app-member-card [user]="user"></app-member-card>
     </div>
