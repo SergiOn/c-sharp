@@ -230,6 +230,10 @@ dotnet ef database update UpdatedUserClass
 dotnet ef migrations add AddedPublicId
 dotnet ef database update
 ```
+```bash
+dotnet ef migrations add AddedLikeEntity
+dotnet ef database update
+```
 
 #### Links
 
