@@ -5,6 +5,7 @@ import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes-gu
 // import { MemberListResolver } from './_resolver/member-list.resolver';
 // import { MemberDetailResolver } from './_resolver/member-detail.resolver';
 // import { MemberEditResolver } from './_resolver/member-edit.resolver';
+// import { ListsResolver } from './_resolver/lists.resolver';
 import { HomeComponent } from './home/home.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
@@ -39,6 +40,7 @@ const routes: Routes = [{
   }, {
     path: 'lists',
     component: ListsComponent
+    // resolve: {users: ListsResolver}
   }]
 }, {
   path: '**',

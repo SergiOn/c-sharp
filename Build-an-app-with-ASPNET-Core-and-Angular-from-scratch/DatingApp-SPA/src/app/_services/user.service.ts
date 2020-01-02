@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { User } from '../_models/user';
 import { PaginatedResult } from '../_models/pagination';
-import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -12,14 +12,16 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(page: number = 1, itemsPerPage: number = 10, userParams: any = {}): Observable<PaginatedResult<User[]>> {
-    const fromObject = {
-      pageNumber: page.toString(),
-      pageSize: itemsPerPage.toString(),
-      ...userParams
-    };
-
-    const params = new HttpParams({ fromObject });
+  getUsers(page: number = 1, itemsPerPage: number = 10, userParams: any = {}, likesParam?: string): Observable<PaginatedResult<User[]>> {
+    const params = new HttpParams({
+      fromObject: {
+        pageNumber: page.toString(),
+        pageSize: itemsPerPage.toString(),
+        ...userParams,
+        likers: likesParam === 'Likers',
+        likees: likesParam === 'Likees'
+      }
+    });
 
     return this.http.get<User[]>(this.url, { observe: 'response', params }).pipe(
       map((response: HttpResponse<User[]>) => new PaginatedResult<User[]>(response.body, JSON.parse(response.headers.get('Pagination'))))
