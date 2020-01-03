@@ -61,7 +61,20 @@ namespace DatingApp.API.Data {
 
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
-        
+
+        private async Task<IEnumerable<int>> GetUserLikes(int id, bool likers) {
+            var user = await context.Users
+                .Include(x => x.Likers)
+                .Include(x => x.Likees)
+                .FirstOrDefaultAsync(u => u.Id == id);
+
+            if (likers) {
+                return user.Likers.Where(u => u.LikeeId == id).Select(i => i.LikerId);
+            } else {
+                return user.Likees.Where(u => u.LikerId == id).Select(i => i.LikeeId);
+            }
+        }
+
         public async Task<Photo> GetPhoto(int id) {
             var photo = await context.Photos.FirstOrDefaultAsync(p => p.Id == id);
             return photo;
@@ -77,17 +90,16 @@ namespace DatingApp.API.Data {
                 .FirstOrDefaultAsync(u => u.LikerId == userId && u.LikeeId == recipientId);
         }
 
-        private async Task<IEnumerable<int>> GetUserLikes(int id, bool likers) {
-            var user = await context.Users
-                .Include(x => x.Likers)
-                .Include(x => x.Likees)
-                .FirstOrDefaultAsync(u => u.Id == id);
+        public async Task<Message> GetMessage(int id) {
+            return await context.Messages.FirstOrDefaultAsync(m => m.Id == id);
+        }
 
-            if (likers) {
-                return user.Likers.Where(u => u.LikeeId == id).Select(i => i.LikerId);
-            } else {
-                return user.Likees.Where(u => u.LikerId == id).Select(i => i.LikeeId);
-            }
+        public Task<PagedList<Message>> GetMessagesForUser() {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Message>> GetMessageThread(int userId, int recipientId) {
+            throw new NotImplementedException();
         }
 
         public async Task<bool> SaveAll() {
