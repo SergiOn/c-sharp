@@ -43,6 +43,9 @@ namespace DatingApp.API.Migrations
                     b.Property<DateTime?>("DateRead")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("MessageSent")
                         .HasColumnType("TEXT");
 

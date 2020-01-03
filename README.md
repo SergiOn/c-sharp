@@ -202,7 +202,7 @@ Done. To undo this action, use 'ef migrations remove'
 ```
 ```bash
 dotnet ef migrations list
-20191208234233_InitialCreate
+20191208234233_InitialCreatedotnet ef database update LastGoodMigration
 20191211150441_AddedUserEntity
 20191216222628_ExtendedUserClass
 ```
@@ -235,6 +235,13 @@ dotnet ef migrations add AddedLikeEntity
 dotnet ef database update
 ```
 ```bash
+dotnet ef migrations add MessageEntityAdded
+dotnet ef database update
+```
+```bash
+dotnet ef migrations list
+dotnet ef database update AddedLikeEntity
+dotnet ef migrations remove
 dotnet ef migrations add MessageEntityAdded
 dotnet ef database update
 ```
