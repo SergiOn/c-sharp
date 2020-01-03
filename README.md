@@ -234,6 +234,10 @@ dotnet ef database update
 dotnet ef migrations add AddedLikeEntity
 dotnet ef database update
 ```
+```bash
+dotnet ef migrations add MessageEntityAdded
+dotnet ef database update
+```
 
 #### Links
 
