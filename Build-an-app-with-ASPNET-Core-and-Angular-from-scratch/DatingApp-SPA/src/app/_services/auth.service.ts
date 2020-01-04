@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map } from 'rxjs/operators';
 import { User } from '../_models/user';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -19,14 +20,14 @@ export class AuthService {
     this.photoUrl = this.currentUser ? this.currentUser.photoUrl : '/assets/user.png';
   }
 
-  changeMemberPhoto(photoUrl: string) {
+  changeMemberPhoto(photoUrl: string): void {
     this.photoUrl = photoUrl;
     this.currentUser.photoUrl = photoUrl;
     localStorage.setItem('user', JSON.stringify(this.currentUser));
   }
 
-  login(model: any) {
-    return this.http.post(`${this.baseUrl}/login`, model).pipe(
+  login(model: any): Observable<User> {
+    return this.http.post<{ token: any, user: User }>(`${this.baseUrl}/login`, model).pipe(
       map((response: any) => {
         if (response) {
           const { token, user } = response;
@@ -35,20 +36,21 @@ export class AuthService {
           this.decodedToken = this.jwtHelperService.decodeToken(token);
           this.currentUser = user;
           this.changeMemberPhoto(user.photoUrl);
+          return user;
         }
       })
     );
   }
 
-  register(user: User) {
-    return this.http.post(`${this.baseUrl}/register`, user);
+  register(user: User): Observable<User> {
+    return this.http.post<User>(`${this.baseUrl}/register`, user);
   }
 
-  loggedIn() {
+  loggedIn(): boolean {
     return !this.jwtHelperService.isTokenExpired();
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('token');
     this.decodedToken = null;
     localStorage.removeItem('user');

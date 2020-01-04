@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../_models/user';
 import { PaginatedResult } from '../_models/pagination';
+import { Message } from '../_models/message';
 
 @Injectable()
 export class UserService {
@@ -32,20 +33,51 @@ export class UserService {
     return this.http.get<User>(`${this.url}/${id}`);
   }
 
-  updateUser(id: number, user: User) {
-    return this.http.put(`${this.url}/${id}`, user);
+  updateUser(id: number, user: User): Observable<void> {
+    return this.http.put<void>(`${this.url}/${id}`, user);
   }
 
-  setMainPhoto(userId: number, id: number) {
-    return this.http.post(`${this.url}/${userId}/photos/${id}/setMain`, null);
+  setMainPhoto(userId: number, id: number): Observable<void> {
+    return this.http.post<void>(`${this.url}/${userId}/photos/${id}/setMain`, null);
   }
 
-  deletePhoto(userId: number, id: number) {
-    return this.http.delete(`${this.url}/${userId}/photos/${id}`);
+  deletePhoto(userId: number, id: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${userId}/photos/${id}`);
   }
 
-  sendLike(id: number, recipientId: number) {
-    return this.http.post(`${this.url}/${id}/like/${recipientId}`, null);
+  sendLike(id: number, recipientId: number): Observable<void> {
+    return this.http.post<void>(`${this.url}/${id}/like/${recipientId}`, null);
+  }
+
+  // getMessages(id: number, page?: number, itemsPerPage?: number, messageContainer?: string): Observable<PaginatedResult<Message[]>> {
+  getMessages(
+    id: number,
+    page: number = 1,
+    itemsPerPage: number = 5,
+    messageContainer: string = 'Unread'
+  ): Observable<PaginatedResult<Message[]>> {
+    // let params = new HttpParams()
+    //   .append('MessageContainer', messageContainer);
+    //
+    // if (page != null && itemsPerPage != null) {
+    //   params = params
+    //     .append('pageNumber', page.toString())
+    //     .append('pageSize', itemsPerPage.toString());
+    // }
+
+    const params = new HttpParams({
+      fromObject: {
+        MessageContainer: messageContainer,
+        pageNumber: page.toString(),
+        pageSize: itemsPerPage.toString()
+      }
+    });
+
+    return this.http
+      .get<Message[]>(`${this.url}/${id}/messages`, { observe: 'response', params })
+      .pipe(
+        map(response => new PaginatedResult<Message[]>(response.body, JSON.parse(response.headers.get('Pagination'))))
+      );
   }
 
 }

@@ -15,6 +15,7 @@ import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes-gu
 import { MemberListResolver } from './_resolver/member-list.resolver';
 import { MemberDetailResolver } from './_resolver/member-detail.resolver';
 import { MemberEditResolver } from './_resolver/member-edit.resolver';
+import { MessagesResolver } from './_resolver/messages.resolver';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthService } from './_services/auth.service';
 import { UserService } from './_services/user.service';
@@ -83,6 +84,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     MemberListResolver,
     MemberDetailResolver,
     MemberEditResolver,
+    MessagesResolver,
     AlertifyService,
     AuthService,
     UserService
