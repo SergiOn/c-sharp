@@ -1,0 +1,20 @@
+table {
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.img-circle {
+  max-height: 50px;
+}
+
+th {
+  width: 20%;
+
+  &:first-of-type {
+    width: 40%;
+  }
+}
+
+td {
+  vertical-align: middle;
+}

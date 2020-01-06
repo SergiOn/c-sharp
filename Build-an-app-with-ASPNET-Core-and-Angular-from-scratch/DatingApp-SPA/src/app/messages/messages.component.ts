@@ -14,10 +14,10 @@ import { Pagination } from '../_models/pagination';
 export class MessagesComponent implements OnInit {
   private readonly pageNumber = 1;
   private readonly pageSize = 5;
-  private readonly messageContainer = 'Unread';
 
   messages: Message[];
   pagination: Pagination;
+  messageContainer = 'Unread';
 
   constructor(
     private router: Router,
@@ -30,7 +30,7 @@ export class MessagesComponent implements OnInit {
     this.loadMessages();
   }
 
-  loadMessages() {
+  loadMessages(): void {
     this.userService.getMessages(this.authService.decodedToken.nameid, this.pageNumber, this.pageSize, this.messageContainer).subscribe(
       (response) => {
         this.messages = response.result;
@@ -46,6 +46,10 @@ export class MessagesComponent implements OnInit {
   pageChanged(event: any): void {
     this.pagination = { ...this.pagination, currentPage: event.page };
     this.loadMessages();
+  }
+
+  deleteMessage(id: number): void {
+
   }
 
 }
