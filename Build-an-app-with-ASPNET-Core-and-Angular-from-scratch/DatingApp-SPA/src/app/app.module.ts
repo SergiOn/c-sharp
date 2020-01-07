@@ -31,6 +31,7 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 export class CustomHammerConfig extends HammerGestureConfig  {
   overrides = {
@@ -74,6 +75,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     MemberDetailComponent,
     MemberEditComponent,
     PhotoEditorComponent,
+    MemberMessagesComponent,
     TimeAgoPipe
   ],
   providers: [

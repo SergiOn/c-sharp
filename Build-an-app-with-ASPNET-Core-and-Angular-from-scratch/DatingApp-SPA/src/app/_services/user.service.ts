@@ -80,4 +80,8 @@ export class UserService {
       );
   }
 
+  getMessageThread(id: number, recipientId: number) {
+    return this.http.get<Message[]>(`${this.url}/${id}/messages/thread/${recipientId}`);
+  }
+
 }
