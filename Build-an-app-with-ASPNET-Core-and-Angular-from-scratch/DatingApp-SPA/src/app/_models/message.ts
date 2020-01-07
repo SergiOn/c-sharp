@@ -8,6 +8,6 @@ export interface Message {
   recipientPhotoUrl: string;
   content: string;
   isRead: boolean;
-  dateRead: Date;
+  dateRead: Date | string;
   messageSent: Date | string;
 }

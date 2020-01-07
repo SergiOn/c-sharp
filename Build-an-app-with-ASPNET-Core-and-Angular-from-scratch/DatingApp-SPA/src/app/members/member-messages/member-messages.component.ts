@@ -13,6 +13,7 @@ export class MemberMessagesComponent implements OnInit {
 
   @Input() recipientId: number;
   messages: Message[];
+  newMessage = { content: '' };
 
   constructor(
     private alertify: AlertifyService,
@@ -33,6 +34,9 @@ export class MemberMessagesComponent implements OnInit {
         this.alertify.error(error);
       }
     );
+  }
+
+  sendMessage() {
   }
 
 }
