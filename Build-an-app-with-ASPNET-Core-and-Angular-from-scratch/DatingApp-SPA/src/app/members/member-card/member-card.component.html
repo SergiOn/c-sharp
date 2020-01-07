@@ -3,7 +3,7 @@
     <img class="card-img-top" [src]="getPhotoUrl()" [alt]="user.knownAs"/>
     <ul class="list-inline member-icons animate text-center">
       <li class="list-inline-item">
-        <button class="btn btn-primary" [routerLink]="['/members/', user.id]">
+        <button class="btn btn-primary" [routerLink]="['/members/', user.id]" [queryParams]="{ tab: 3 }">
           <i class="fa fa-user"></i>
         </button>
       </li>
