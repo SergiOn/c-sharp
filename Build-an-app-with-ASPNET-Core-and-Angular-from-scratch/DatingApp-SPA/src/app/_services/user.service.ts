@@ -80,16 +80,20 @@ export class UserService {
       );
   }
 
-  getMessageThread(id: number, recipientId: number) {
+  getMessageThread(id: number, recipientId: number): Observable<Message[]> {
     return this.http.get<Message[]>(`${this.url}/${id}/messages/thread/${recipientId}`);
   }
 
-  sendMessage(id: number, message: Message) {
-    return this.http.post(`${this.url}/${id}/messages`, message);
+  sendMessage(id: number, message: Message): Observable<Message> {
+    return this.http.post<Message>(`${this.url}/${id}/messages`, message);
   }
 
-  deleteMessage(id: number, userId: number) {
-    return this.http.post(this.url + '/' + userId + '/messages/' + id, null);
+  deleteMessage(id: number, userId: number): Observable<void> {
+    return this.http.post<void>(`${this.url}/${userId}/messages/${id}`, null);
+  }
+
+  markAsRead(userId: number, messageId: number): Observable<void> {
+    return this.http.post<void>(`${this.url}/${userId}/messages/${messageId}/read`, null);
   }
 
 }
