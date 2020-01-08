@@ -16,7 +16,7 @@ export class MessagesComponent implements OnInit {
   private readonly pageSize = 5;
 
   messages: Message[];
-  pagination: Pagination;
+  pagination: Pagination = {} as Pagination;
   messageContainer = 'Unread';
 
   constructor(
@@ -31,7 +31,9 @@ export class MessagesComponent implements OnInit {
   }
 
   loadMessages(): void {
-    this.userService.getMessages(this.authService.decodedToken.nameid, this.pageNumber, this.pageSize, this.messageContainer).subscribe(
+    const pageNumber = this.pagination.currentPage || this.pageNumber;
+    const pageSize = this.pagination.itemsPerPage || this.pageSize;
+    this.userService.getMessages(this.authService.decodedToken.nameid, pageNumber, pageSize, this.messageContainer).subscribe(
       (response) => {
         this.messages = response.result;
         this.pagination = response.pagination;
@@ -44,12 +46,31 @@ export class MessagesComponent implements OnInit {
   }
 
   pageChanged(event: any): void {
+    console.log(event);
     this.pagination = { ...this.pagination, currentPage: event.page };
     this.loadMessages();
   }
 
-  deleteMessage(id: number): void {
-
+  deleteMessage(id: number) {
+    this.alertify.confirm(
+      'Are you sure you want to delete this message?',
+      () => {
+        this.userService
+          .deleteMessage(id, this.authService.decodedToken.nameid)
+          .subscribe(
+            () => {
+              this.messages.splice(
+                this.messages.findIndex(m => m.id === id),
+                1
+              );
+              this.alertify.success('Message has been deleted');
+            },
+            error => {
+              this.alertify.error('Failed to delete the message');
+            }
+          );
+      }
+    );
   }
 
 }

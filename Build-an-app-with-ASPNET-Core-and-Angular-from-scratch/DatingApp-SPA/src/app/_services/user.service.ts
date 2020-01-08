@@ -88,4 +88,8 @@ export class UserService {
     return this.http.post(`${this.url}/${id}/messages`, message);
   }
 
+  deleteMessage(id: number, userId: number) {
+    return this.http.post(this.url + '/' + userId + '/messages/' + id, null);
+  }
+
 }
