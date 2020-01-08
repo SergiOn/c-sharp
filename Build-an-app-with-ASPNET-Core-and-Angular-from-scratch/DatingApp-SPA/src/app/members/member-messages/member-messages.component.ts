@@ -13,7 +13,7 @@ export class MemberMessagesComponent implements OnInit {
 
   @Input() recipientId: number;
   messages: Message[];
-  newMessage = { content: '' };
+  newMessage: any = { content: '' };
 
   constructor(
     private alertify: AlertifyService,
@@ -21,11 +21,11 @@ export class MemberMessagesComponent implements OnInit {
     private userService: UserService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadMessages();
   }
 
-  loadMessages() {
+  loadMessages(): void {
     this.userService.getMessageThread(this.authService.decodedToken.nameid, this.recipientId).subscribe(
       messages => {
         this.messages = messages;
@@ -36,7 +36,19 @@ export class MemberMessagesComponent implements OnInit {
     );
   }
 
-  sendMessage() {
+  sendMessage(): void {
+    this.newMessage.recipientId = this.recipientId;
+    this.userService
+      .sendMessage(this.authService.decodedToken.nameid, this.newMessage)
+      .subscribe(
+        (message: Message) => {
+          this.messages.unshift(message);
+          this.newMessage.content = '';
+        },
+        error => {
+          this.alertify.error(error);
+        }
+      );
   }
 
 }
