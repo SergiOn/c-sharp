@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using DatingApp.API.Controllers;
 using DatingApp.API.Data;
 using DatingApp.API.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -81,11 +82,19 @@ namespace DatingApp.API {
 //            app.UseCors(x => x.WithOrigins("localhost", "localhost").AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthentication();
-
             app.UseAuthorization();
+
+            // if (env.IsProduction()) {
+                app.UseDefaultFiles();
+                app.UseStaticFiles();
+            // }
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
+
+                // if (env.IsProduction()) {
+                    endpoints.MapFallbackToController("Index", "Fallback");
+                // }
             });
         }
     }
