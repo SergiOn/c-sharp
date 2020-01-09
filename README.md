@@ -271,6 +271,12 @@ mysql> show databases;
 dotnet run
 ```
 
+#### Publishing
+
+```bash
+dotnet publish --configuration Release
+```
+
 #### Links
 
 https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy
