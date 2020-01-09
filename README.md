@@ -63,6 +63,8 @@ https://www.npmjs.com/package/time-ago-pipe
 
 https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer
 
+https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies
+
 #### Commands
 
 ```bash
@@ -328,4 +330,6 @@ https://stackoverflow.com/questions/5179341/a-lambda-expression-with-a-statement
 https://github.com/angular/angular-cli/issues/13734
 
 https://docs.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli
+
+https://docs.microsoft.com/en-us/ef/core/querying/related-data
 
