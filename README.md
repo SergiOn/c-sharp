@@ -61,6 +61,8 @@ https://www.nuget.org/packages/Newtonsoft.Json/
 
 https://www.npmjs.com/package/time-ago-pipe
 
+https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer
+
 #### Commands
 
 ```bash
@@ -257,6 +259,14 @@ mysql -u appuser -p
 > password
 show databases;
 exit
+```
+```bash
+ASPNETCORE_ENVIRONMENT=Production dotnet ef migrations add MySqlInitial
+mysql -u appuser -p
+mysql> show databases;
+mysql> drop database datingapp;
+mysql> show databases;
+dotnet run
 ```
 
 #### Links
