@@ -7,7 +7,8 @@ export interface User {
   age: number;
   gender: string;
   created: Date | string;
-  lastActive: Date | string;
+  // lastActive: Date | string;
+  lastActive: string;
   photoUrl: string;
   city: string;
   country: string;

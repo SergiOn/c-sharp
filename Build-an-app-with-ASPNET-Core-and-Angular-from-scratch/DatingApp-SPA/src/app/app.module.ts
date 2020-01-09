@@ -40,6 +40,10 @@ export class CustomHammerConfig extends HammerGestureConfig  {
   };
 }
 
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -50,7 +54,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => localStorage.getItem('token'),
+        tokenGetter,
         blacklistedRoutes: ['/api/auth/login', '/api/auth/register']
       }
     }),
