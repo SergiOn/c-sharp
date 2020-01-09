@@ -245,6 +245,19 @@ dotnet ef migrations remove
 dotnet ef migrations add MessageEntityAdded
 dotnet ef database update
 ```
+```bash
+mysql -u root -p
+> password
+show databases;
+CREATE USER 'appuser'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'appuser'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+quit
+mysql -u appuser -p
+> password
+show databases;
+exit
+```
 
 #### Links
 
@@ -303,4 +316,6 @@ https://stackoverflow.com/questions/49078286/angular-5-reactive-forms-radio-butt
 https://stackoverflow.com/questions/5179341/a-lambda-expression-with-a-statement-body-cannot-be-converted-to-an-expression
 
 https://github.com/angular/angular-cli/issues/13734
+
+https://docs.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli
 
