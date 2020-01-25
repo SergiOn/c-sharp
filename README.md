@@ -339,3 +339,12 @@ https://docs.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli
 
 https://docs.microsoft.com/en-us/ef/core/querying/related-data
 
+
+## What's New in C#7 and C#8
+
+https://www.udemy.com/course/csharp7-whats-new/
+
+#### About
+
+Learn about latest features of C#7 and C#8
+
