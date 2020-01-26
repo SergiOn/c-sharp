@@ -9,7 +9,8 @@ namespace CSharp7Demo {
 
             // OutVariables.MainOV(args);
             // Tuples.MainT(args);
-            Deconstruction.MainDec(args);
+            // Deconstruction.MainDec(args);
+            LocalFunctions.MainT(args);
 
         }
 
