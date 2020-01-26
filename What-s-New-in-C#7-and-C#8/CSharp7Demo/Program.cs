@@ -8,7 +8,8 @@ namespace CSharp7Demo {
             // Console.WriteLine("Hello World!");
 
             // OutVariables.MainOV(args);
-            Tuples.MainT(args);
+            // Tuples.MainT(args);
+            Deconstruction.MainDec(args);
 
         }
 
