@@ -7,7 +7,8 @@ namespace CSharp71Demos {
         static void Main(string[] args) {
             // Console.WriteLine("Hello World!");
 
-            DefaultLiteral.MainDL();
+            // DefaultLiteral.MainDL();
+            RefAssembly.MainRA(args);
         }
 
     }
