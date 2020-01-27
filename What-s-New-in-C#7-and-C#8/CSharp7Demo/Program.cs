@@ -13,7 +13,8 @@ namespace CSharp7Demo {
             // LocalFunctions.MainT(args);
             // RefReturnsAndLocals.MainRRL(args);
             // ExpressionBodiedMembers.MainEBM(args);
-            ThrowExpressions.MainTE(args);
+            // ThrowExpressions.MainTE(args);
+            GeneralizedAsyncReturnTypes.MainGART(args);
 
         }
 
