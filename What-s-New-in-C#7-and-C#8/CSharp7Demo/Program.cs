@@ -14,7 +14,8 @@ namespace CSharp7Demo {
             // RefReturnsAndLocals.MainRRL(args);
             // ExpressionBodiedMembers.MainEBM(args);
             // ThrowExpressions.MainTE(args);
-            GeneralizedAsyncReturnTypes.MainGART(args);
+            // GeneralizedAsyncReturnTypes.MainGART(args);
+            LiteralImprovements.MainLI(args);
 
         }
 
