@@ -10,7 +10,8 @@ namespace CSharp7Demo {
             // OutVariables.MainOV(args);
             // Tuples.MainT(args);
             // Deconstruction.MainDec(args);
-            LocalFunctions.MainT(args);
+            // LocalFunctions.MainT(args);
+            RefReturnsAndLocals.MainRRL(args);
 
         }
 
