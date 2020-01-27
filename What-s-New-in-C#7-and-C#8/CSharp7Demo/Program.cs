@@ -11,7 +11,8 @@ namespace CSharp7Demo {
             // Tuples.MainT(args);
             // Deconstruction.MainDec(args);
             // LocalFunctions.MainT(args);
-            RefReturnsAndLocals.MainRRL(args);
+            // RefReturnsAndLocals.MainRRL(args);
+            ExpressionBodiedMembers.MainEBM(args);
 
         }
 
