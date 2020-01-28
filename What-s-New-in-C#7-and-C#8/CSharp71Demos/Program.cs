@@ -9,7 +9,8 @@ namespace CSharp71Demos {
 
             // DefaultLiteral.MainDL();
             // RefAssembly.MainRA(args);
-            InferTupleNames.MainITN(args);
+            // InferTupleNames.MainITN(args);
+            PatternMatchingWithGenerics.MainPMG(args);
         }
 
     }
