@@ -8,7 +8,8 @@ namespace CSharp71Demos {
             // Console.WriteLine("Hello World!");
 
             // DefaultLiteral.MainDL();
-            RefAssembly.MainRA(args);
+            // RefAssembly.MainRA(args);
+            InferTupleNames.MainITN(args);
         }
 
     }
