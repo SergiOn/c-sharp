@@ -19,8 +19,10 @@ namespace CSharp72Demos {
             
             // LeadingUnderscoresNumericSeparators.MainLUNS(args);
             
-            Derived d = new Derived();
-            PrivateProtected.MainPP(args);
+            // Derived d = new Derived();
+            // PrivateProtected.MainPP(args);
+
+            NonTrailingNamedArguments.MainNTNA(args);
 
         }
 
