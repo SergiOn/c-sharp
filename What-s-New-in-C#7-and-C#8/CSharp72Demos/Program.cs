@@ -22,7 +22,8 @@ namespace CSharp72Demos {
             // Derived d = new Derived();
             // PrivateProtected.MainPP(args);
 
-            NonTrailingNamedArguments.MainNTNA(args);
+            // NonTrailingNamedArguments.MainNTNA(args);
+            RefSemanticsValueTypes.MainRSVT(args);
 
         }
 
